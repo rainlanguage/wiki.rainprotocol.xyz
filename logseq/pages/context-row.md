@@ -1,0 +1,7 @@
+- A [[rainlang]] [[word]] that allows reading a single row from a single [[context]] column dynamically, i.e. by using a value from the stack as the row index to read
+- The column is still set statically as per [[context]]
+- The intent is to allow expressions to expose a column of options that can be selected between by runtime values
+	- A use case would be a [[flow]] [[calling contract]] that allows a service provider to sign a price sheet of a tiered service, the [[msg.sender]] could pass in their desired service tier, e.g. "tier 3" and then [[context-row]] could read the price for tier 3 from the price list
+	- Essentially [[context-row]] facilitates runtime selections of things from lists by mapping values from the stack to indexes to values from context
+	- The column is still set statically because we're trying to index/select within a single concern rather than cutting across concerns, typically each column of [[context]] is intended to represent an entirely different set of things
+- [[context]] alone is incapable of providing runtime selections as _both_ the row and column are immutable at deploy time due to being specified by the operand
