@@ -1,0 +1,6 @@
+- The high level lifecycle of a rain expression from the perspective of a [[calling contract]] is:
+	- An [[expression/author]] authors the [[expression]], e.g. via [[Rainlang]] and/or [[Studio]]
+	- Some [[EOA]] deploys the [[expression]] as a real [[onchain]] contract, e.g. via [SSTORE2](https://github.com/0xsequence/sstore2)
+	- The [[expression]] is scanned by a trusted [[expression deployer]] that can perform the [[expression/integrity check]]
+	- Assuming the [[expression/integrity check]] is clean the [[expression]] will have some [[entrypoint]] much like a `main` function in other programming languages.
+	- Anyone can review the [[expression/decompiled]] to [[Rainlang]] much like [[verified contracts]] on [[etherscan]] to get an understanding of what it does. This allows users to trust an [[immutable]] [[Solidity]] [[calling contract]], [[expression deployer]] and [[interpreter]] and just focus on understanding the relatively simple/focussed [[logic]] of a single [[expression]].

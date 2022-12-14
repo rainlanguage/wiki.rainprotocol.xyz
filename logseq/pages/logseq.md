@@ -1,0 +1,2 @@
+- aliases
+	- https://aryansawhney.com/pages/the-ultimate-guide-to-aliases-in-logseq/

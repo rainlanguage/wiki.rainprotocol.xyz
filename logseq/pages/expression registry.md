@@ -1,14 +1,14 @@
 - # context
 - main concern is that we haven't done enough R&D into the threat vector of allowing untrusted expressions to run on the shared interpreter
 - current flow of logic is something like this
-	- [[expression deployer]] runs [[integrity check]] over [[index opcodes]]
+	- [[expression deployer]] runs [[expression/integrity check]] over [[index opcodes]]
 	- indexes are mapped to [[function pointers]] and the function pointers are the bytes that are deployed onchain with sstore2
 	- [[calling contract]] receives address to onchain [[expression]] and passes it back to [[interpreter]] to run
 	- [[interpreter]] loops over the [[function pointers]] it reads from the [[expression]] and runs them according to the [[function signature]] that it expects all [[opcodes]] to have during [[eval]]
 - until now everything in the interpreter has been read only, all the opcode functions have been [[view]] or [[pure]] so any undefined behaviour during [[eval]] could arbitrarily corrupt the stack, but honest [[calling contracts]] can guard against return values that are so malformed as to be unreadable and have no control over stack values anyway, so arbitrary due to bad [[function pointers]] is just as arbitrary as arbitrary due to malicious [[expression]]
 - now the standard shared [[interpreter]] writes to storage which means that there are some code paths in the compiled [[interpreter]] that modify storage that is written/read across all expressions
 	- suddenly the attack surface allows a malicious expression to potentially run a codepath that would modify storage values that other expressions will later read, this would be a critical security issue, consider the case where alice places an order on the order book and bob manages to trick the [[interpreter]] into modifying alice's price lower to give bob arbitrarily cheap tokens
-- the [[IInterpreterV2]] interface _appears_ safe as the only [[external]] function that accepts [[function pointers]] is [[view]] but how does [[Solidity]] actually enforce this?
+- the [[interpreter/interface/IInterpreterV1]] interface _appears_ safe as the only [[external]] function that accepts [[function pointers]] is [[view]] but how does [[Solidity]] actually enforce this?
 	- [EIP-214](https://eips.ethereum.org/EIPS/eip-214) introduced [[STATICCALL]] which is the logic that the _caller_ uses to enforce rollback upon state changes, but what can the _callee_ do to protect itself?
 	  
 	  > This proposal adds a new opcode that can be used to call another contract (or itself) while disallowing any modifications to the state during the call (and its subcalls, if present). Any opcode that attempts to perform such a modification (see below for details) will result in an exception instead of performing the modification.

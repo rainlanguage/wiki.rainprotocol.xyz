@@ -1,0 +1,9 @@
+- One option for integrating with [[rainlang]] is to write a [[Solidity]] contract that uses the interface of an existing [[interpreter]] onchain.
+	- [[interpreter/IInterpreterV1]]
+- [[interpreter/advantages]]
+- [[interpreter/interface/antipattern]]
+- [[expression/lifecycle]]
+- [[trust relationship]]
+- [[expression/integrity check]]
+- [[entrypoint]]
+- [[interpreter/namespace]]

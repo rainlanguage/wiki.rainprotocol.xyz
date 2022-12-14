@@ -1,0 +1,7 @@
+- When you DON'T need to implement calls to the interpreter interface
+	- [[interpreter/interface/antipattern/redundant calling contract]]
+	- [[interpreter/interface/antipattern/not using wordpack]]
+	- [[interpreter/interface/antipattern/inheritance]]
+	- [[interpreter/interface/antipattern/oracle calling contract]]
+-
+-

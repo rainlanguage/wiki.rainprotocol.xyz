@@ -2,7 +2,7 @@
 - calling these modifications [[stakepreter]] because everything needs to be either a pun on "rain" or "interpreter" of course
 - It's already the 12th so not much time!
 - luckily we're basically already in QA
-	- PR is up for an [ERC4626](https://ethereum.org/en/developers/docs/standards/tokens/erc-4626/) compliant extension to `maxDeposit` and `maxWithdraw` to simply inject the [[IInterpreterV2]] interface on top of what [[Open Zeppelin]] does, with a cap of whatever OZ does
+	- PR is up for an [ERC4626](https://ethereum.org/en/developers/docs/standards/tokens/erc-4626/) compliant extension to `maxDeposit` and `maxWithdraw` to simply inject the [[interpreter/interface/IInterpreterV1]] interface on top of what [[Open Zeppelin]] does, with a cap of whatever OZ does
 	- `maxMint` and `maxRedeem` are simply calculated by converting `maxDeposit` and `maxWithdraw` to shares from the asset throttling calculations
 - auditors are [[Xord]] and they already said that auditing all the opcodes would be too large for scope
 	- we decided to get just the core of the [[expression deployer]] and [[interpreter]] loops audited + whichever words are actually relevant to the first [[expression]] that we want to deploy with [[Stake]]
