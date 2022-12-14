@@ -14,3 +14,6 @@
 	- fix known issues with [[interpreter]] that prevent prod deployment
 		- notably [[expression registry]] and [[stack highwater]] plus removing deprecated code such as [[StandardInterpreter]]
 - we MAY send to audit in parallel to test writing if we feel we've covered the basics enough with our inhouse QA, and can continue to backfill tests while the auditors review it all
+- Some things worth reading for audit
+	- [[interpreter/integration]]
+	- [[rainlang wordlist]]
