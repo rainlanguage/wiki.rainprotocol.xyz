@@ -9,7 +9,7 @@
 - # Context
 -
 - previously in [[rainlang]] we allowed `_` on the RHS when some [[word]] [[pushes]] more than one value on the [[stack]], this is confusing
-	- if the mere presence of a [[word]] implies 1 value on the [[stack]] it is hard to say what the correct behaviour and visual representation should be for things that put 0 values on the stack e.g. [[ensure]]
+	- if the mere presence of a [[word]] implies 1 value on the [[stack]] it is hard to say what the correct behaviour and visual representation should be for things that put 0 values on the stack e.g. [[word/ensure]]
 	- having multiple outputs can break otherwise reasonable expectations/assumptions like addition being commutative consider:
 	  ```
 	  _ _ _: _ _ add(_ call<1 4 1>(x) 1 2);
