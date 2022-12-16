@@ -1,0 +1,2 @@
+- [[interpreter]] and [[expression deployer]] MUST be paired at the [[bytecode]] and [[function pointer]] level in all [[onchain]] and [[offchain]] interactions. This includes [[rainlang]] and [[interpreter/js]] and should even include this wiki which means pages like [[word/list]] are technically in violation of [[DI pairing]] rules.
+-

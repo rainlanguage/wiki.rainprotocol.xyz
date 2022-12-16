@@ -6,7 +6,7 @@
 	- `maxMint` and `maxRedeem` are simply calculated by converting `maxDeposit` and `maxWithdraw` to shares from the asset throttling calculations
 - auditors are [[Xord]] and they already said that auditing all the opcodes would be too large for scope
 	- we decided to get just the core of the [[expression deployer]] and [[interpreter]] loops audited + whichever words are actually relevant to the first [[expression]] that we want to deploy with [[Stake]]
-	- main thing will be deciding on the [[expression]] that we want to write so we know exactly what subset of the [[rainlang wordlist]] would be relevant to get audited
+	- main thing will be deciding on the [[expression]] that we want to write so we know exactly what subset of the [[word/list]] would be relevant to get audited
 - for audit will need
 	- sweep of relevant [[interpreter]] and [[Stake]] contracts for documentation accuracy
 	- appropriate QA/testing
@@ -16,4 +16,4 @@
 - we MAY send to audit in parallel to test writing if we feel we've covered the basics enough with our inhouse QA, and can continue to backfill tests while the auditors review it all
 - Some things worth reading for audit
 	- [[interpreter/integration]]
-	- [[rainlang wordlist]]
+	- [[word/list]]

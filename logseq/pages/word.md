@@ -1,3 +1,3 @@
 - [[rainlang]] calls its [[opcodes]] "words"
 	- The base of the interpreter provides 0 words but there is a standard interpreter contract that ships with many words
-	- The [[rainlang wordlist]] is constantly evolving with each iteration of the [[interpreter]], unlike the evm opcode list that is relatively static, requiring blockchain level hardforks to add/remove ops, further ossified by the proliferation of "evm compatible" networks
+	- The [[word/list]] is constantly evolving with each iteration of the [[interpreter]], unlike the evm opcode list that is relatively static, requiring blockchain level hardforks to add/remove ops, further ossified by the proliferation of "evm compatible" networks

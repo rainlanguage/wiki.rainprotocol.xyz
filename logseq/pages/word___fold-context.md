@@ -1,0 +1,17 @@
+- A [[rainlang]] [[word]] that is a thin wrapper around [[word/call]] for the purpose of iterating over [[context]]
+- As [[context]] is a 2D sparse matrix where the columns have unknown lengths at deploy time, we have to wait until we receive the runtime context to know how many iterations are required for our loop
+- [[word/fold-context]] functions much like [[fold]] does in languages like [Rust](https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html#method.fold) and [Clojure](https://clojuredocs.org/clojure.core.reducers/fold) but allows for multiple [[accumulators]]
+- The operand of [[word/fold-context]] specifies:
+	- the number of values to pop off the stack to act as the initial values for the accumulator(s)
+	- the starting column of [[context]] to iterate over
+	- the width (number of columns) to pass as inputs to call
+	- the source index as per [[word/call]] for each iteration
+- For each row of the columns being iterated over [[word/call]] will apply the accumulator(s) and the values in each row as inputs to the [[entrypoint]] and then finally return the accumulator(s) pushed onto the stack
+	- Note this implies that the inputs (sans width) and outputs of [[word/fold-context]] are always the same so there is no need or ability to specify outputs in the operand
+- The expectation is that the [[interpreter/calling contract]] MAY want to pass a context provided by [[msg.sender]] at runtime that is opaque to both the [[interpreter/calling contract]] and the [[interpreter]], meaning neither even knows the length of the provided [[context]] columns
+	- An example use case is a [[interpreter/calling contract/flow]] contract that sells physical goods, e.g. t-shirts that have combinatorial options such as size and colour, the user could provide a list of their desired options in context and then the [[interpreter/calling contract/flow]] [[expression]] can iterate over them to calculate a final price and handle stock tracking against each combination
+	- The _width_ of the fold MUST be known statically as this determines the stack height per-iteration due to the rows being copied as inputs to the [[entrypoint]] being iterated over
+- It is NOT possible to use [[word/loop-n]] or [[word/do-while]] to replace the functionality of [[word/fold-context]]
+	- [[word/loop-n]] requires knowing the _length_ statically, which is not possible if the [[msg.sender]] is providing a list at runtime of arbitrary length
+	- [[word/do-while]] requires checking a [[truthy]] value for each iteration but attempting to read [[context]] outside its bounds would error and rollback the transaction, and we don't want to impose try/catch semantics on [[expression]] authors
+	-

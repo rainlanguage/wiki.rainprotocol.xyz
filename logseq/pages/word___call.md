@@ -1,7 +1,7 @@
 - main workhorse for any [[rainlang]] [[word]] (and is also a word itself) that wants to be function-like in that it has:
 	- a reference to a source index that behaves like an [[entrypoint]]
 	- 0+ inputs, which differentiates it from main entrypoints that only have 0 inputs
-	- 0+ outputs, where 0 outputs may be useful in the case of [[set]]
+	- 0+ outputs, where 0 outputs may be useful in the case of [[word/set]]
 	- an internal scope/stack while it runs
 	- deallocates memory unused by outputs after it runs
 - is not trying to be "a real function" (whatever that means in your language of choice), mostly only concerned with building then discarding a substack

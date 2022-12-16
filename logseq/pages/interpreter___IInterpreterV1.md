@@ -1,6 +1,6 @@
 - The [[interpreter/interface]] `IInterpreterV1` is split into a read only `[[eval]]` function and an optional [[state]] changing `[[stateChanges]]` function.
 - The [[interpreter]] contract therefore has two jobs:
 	- Given an [[expression]], run it and return a result without changing [[state]]
-	- Given a list of [[state]] changes, apply them to its own [[storage]] that can be read later e.g. with [[get]]
-- The list of [[state]] changes are opaque/decoupled from the [[interpreter/calling contract]]. Their meaning is known only to the [[expression]] author, and are returned alongside the [[expression]] result. For example [[set]] can be used to update the [[state changes]] list with the intent that these are pushed to [[interpreter]] [[storage]] and can be retrieved with [[get]].
+	- Given a list of [[state]] changes, apply them to its own [[storage]] that can be read later e.g. with [[word/get]]
+- The list of [[state]] changes are opaque/decoupled from the [[interpreter/calling contract]]. Their meaning is known only to the [[expression]] author, and are returned alongside the [[expression]] result. For example [[word/set]] can be used to update the [[state changes]] list with the intent that these are pushed to [[interpreter]] [[storage]] and can be retrieved with [[word/get]].
 - The reason for the two step process is to allow the calling contract to apply its own calculations and [[state changes]] on the result of `[[eval]]` first before calling back to the [[interpreter]] with the external writes.

@@ -5,7 +5,7 @@
 - [[stack]] MUST move the highwater past the index it reads from
 - the idea is to prevent nesting multioutputs or consuming things that have been copied from the stack
 - it is an [[integrity error]] to pop below the highwater, it will be treated exactly as a stack underflow has been treated up to this point
-- the net result is that certain operations suck as [[stack]] and anything multioutput such as [[call]] or even inputs to a [[call]] [[entrypoint]] become immutable on the stack during an [[eval]] and can only be copied in order to be read
+- the net result is that certain operations suck as [[stack]] and anything multioutput such as [[word/call]] or even inputs to a [[word/call]] [[entrypoint]] become immutable on the stack during an [[eval]] and can only be copied in order to be read
 - # Context
 -
 - previously in [[rainlang]] we allowed `_` on the RHS when some [[word]] [[pushes]] more than one value on the [[stack]], this is confusing
@@ -60,4 +60,4 @@
   ```
   This is a gas/memory tradeoff against legibility as the final stack height is 3 rather than 1 and there is an extra call to `stack` to copy the inner addition to the outer addition. Luckily stack is one of, if not the cheapest opcode, and is almost a noop relative to the base cost of looping over its [[function pointer]].
 -
-- We also want to apply the same idempotence rules to inputs to [[call]] , if there are n inputs then the first n values are copy-on-read, all the same reasoning as [[stack]] applies here because in [[rainlang]] [[call]] inputs always appear on the LHS with no corresponding RHS, which is the same as saying that they cannot be nested, so we should enforce their highwater also
+- We also want to apply the same idempotence rules to inputs to [[word/call]] , if there are n inputs then the first n values are copy-on-read, all the same reasoning as [[stack]] applies here because in [[rainlang]] [[word/call]] inputs always appear on the LHS with no corresponding RHS, which is the same as saying that they cannot be nested, so we should enforce their highwater also
