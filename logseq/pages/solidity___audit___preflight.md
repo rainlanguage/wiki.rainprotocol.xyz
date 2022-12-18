@@ -1,0 +1,12 @@
+- Things to check before sending solidity code to audit
+	- [[slither]] is clean
+		- running latest version of [[slither]]
+		- all remaining issues checked for false positives
+	- [[pin dependencies]] using `=` syntax in [[semver]]
+		- ensure all dependencies are up to date when pinning
+	- remove unused or marginally useful dependencies
+	- remove duplicate dependencies, favour transitive dependencies already included upstream
+	- review [[license]]
+	- Check sentence case and full stops on sentences, other grammar etc. in comments
+	- Ensure every function, struct and event is commented
+	- review readme
