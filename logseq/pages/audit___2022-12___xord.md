@@ -1,3 +1,29 @@
+- contracts in scope
+	- stake/Stake.sol
+		- interpreter/run/LibContext.sol
+		- tier/TierV2.sol
+			- ITierV2.sol
+		- tier/libraries/TierConstants.sol
+		- tier/libraries/TierReport.sol
+		- interpreter/shared/Rainterpreter.sol
+			- interpreter/run/IInterpreterV1.sol
+			- interpreter/ops/AllStandardOps.sol
+				- interpreter/ops/core/OpReadMemory.sol
+					- interpreter/run/LibStackPointer.sol
+					- interpreter/run/LibInterpreterState.sol
+					- interpreter/deploy/LibIntegrityCheck.sol
+					- math/Binary.sol
+				- interpreter/ops/math/OpAdd.sol
+					- array/LibUint256Array.sol
+				- interpreter/ops/core/OpContext.sol
+				- type/LibCast.sol
+				- type/LibConvert.sol
+			- interpreter/run/LibEncodedDispatch.sol
+			- interpreter/ops/core/OpGet.sol
+			- kv/LibMemoryKV.sol
+		- interpreter/shared/RainterpreterExpressionDeployer.sol
+			- interpreter/deploy/LibIntegrityCheck.sol
+			- interpreter/deploy/IExpressionDeployerV1.sol
 - want to get deposit/withdraw throttling on [[Stake]] off to audit by EOY 2022
 - calling these modifications [[stakepreter]] because everything needs to be either a pun on "rain" or "interpreter" of course
 - It's already the 12th so not much time!
